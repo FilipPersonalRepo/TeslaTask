@@ -1,0 +1,49 @@
+Metrics:
+
+Applicant_Count
+COUNT([Applicant ID])
+
+Index
+INDEX()
+
+Perc_of_Total
+[Applicant_Count]/AVG([Total_Count])
+
+Perc_of_Total (P/D)
+[Applicant_Count]/AVG([Total_Count (P/D)])
+
+Perc_of_Total (Positions)
+[Applicant_Count]/AVG([Total_Count (Positions)])
+
+Position_Count
+COUNTD([Job Position Code])
+
+Total_Count
+{FIXED :COUNT([Applicant ID])}
+
+Total_Count (P/D)
+{EXCLUDE [Department Code], [Job Position Code] :COUNT([Applicant ID])}
+
+Total_Count (Positions)
+{EXCLUDE  [Job Position Code] :COUNT([Applicant ID])}
+
+Female_Applicants_Count
+COUNT(IF [Gender]='F' THEN 1 END)
+
+Male_Applicants_Count
+COUNT(IF [Gender]='M' THEN 1 END)
+
+Gender_Diff_Count(M to F)
+abs([Male_Applicants_Count]-[Female_Applicants_Count])
+
+Gender_Disparity
+[Gender_Diff_Count(M to F)]/[Applicants_Count]
+
+Positions_Count
+COUNTD([Job Position Code])
+
+Total_Count(Stage)
+AVG({EXCLUDE [Stage]:[Applicants_Count]})
+
+Perc_Applicants_Stage
+[Applicants_Count]/[Total_Count(Stage)]
