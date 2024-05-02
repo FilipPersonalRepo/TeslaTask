@@ -22,3 +22,7 @@ jobs:
       - name: Update run.json
         run: |
           sed -i "s/{param}/$(echo ${{ steps.read-input.outputs.param }})/g" run.json
+          
+      - name: Verify testname
+        run: |
+          cat run.json
