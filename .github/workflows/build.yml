@@ -17,7 +17,7 @@ jobs:
       
       - name: Read input.yml
         id: read-input
-        run: echo "::set-output name=param::$(cat input.yml)"
+        run: echo "::set-output name=param::$(cat input.yml | cut -d ':' -f 2 | tr -d ' ')"
       
       - name: Update run.json
         run: |
