@@ -29,6 +29,8 @@ jobs:
           for param in steps.set-params.outputs; do 
             key=$(echo $param | cut -d'=' -f1)
             value=$(echo $param | cut -d'=' -f2)
+            echo "Extracted Parameter: $key"
+            echo "Extracted Value: $value"
             sed -i "s/{$key}/$value/g" run.json
           done
       - name: Verify run.json
