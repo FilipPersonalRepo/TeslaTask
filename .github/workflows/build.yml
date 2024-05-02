@@ -1,1 +1,12 @@
-name: TestingActions
+name: Testing
+
+on:
+  workflow_dispatch:
+
+jobs:
+  do-nothing:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Do nothing action
+        run: echo "This job does nothing"
