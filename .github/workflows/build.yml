@@ -10,3 +10,9 @@ jobs:
     steps:
       - name: Do nothing action
         run: echo "This job does nothing"
+  do-nothing2:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Do nothing action
+        run: echo "This job does nothing"
