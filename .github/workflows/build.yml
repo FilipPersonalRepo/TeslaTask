@@ -1,4 +1,5 @@
 name: Testing
+
 on:
   workflow_dispatch:
 
@@ -20,8 +21,11 @@ jobs:
 
       - name: Update run.json with params
         run: |
-          for param in $(cat input.yml | awk -F': ' '{print $1}'); do 
-            sed -i "s/{$param}/$(echo ${{ steps.set-params.outputs[$param] }})/g" run.json
+          params=$(echo "${{ steps.set-params.outputs.params }}" | jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]')
+          for param in $params; do 
+            key=$(echo $param | cut -d'=' -f1)
+            value=$(echo $param | cut -d'=' -f2)
+            sed -i "s/{$key}/$value/g" run.json
           done
 
       - name: Verify updated content of run.json
