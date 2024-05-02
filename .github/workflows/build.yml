@@ -18,7 +18,10 @@ jobs:
             value=$(cat input.yml | grep "^$param" | cut -d ':' -f 2 | tr -d ' ')
             echo "::set-output name=$param::$value"
           done
-
+          
+      - name: Verify $params
+        run: cat $params
+      
       - name: Update run.json with params
         run: |
           params=$(echo "${{ steps.set-params.outputs.params }}" | jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]')
