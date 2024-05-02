@@ -1,3 +1,6 @@
 {
-  testname: "rg-dev-{param}"
+  testname: "rg-dev-{name}-{state}"
+  , testregion: { 
+                level2:  "{region}-{name}"
+                }
 }
