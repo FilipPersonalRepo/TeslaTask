@@ -24,3 +24,12 @@ jobs:
                     echo "::set-output name=$param::$value"
                 fi
             done
+      - name: Loop Through All Outputs
+        run: |
+          declare -A params=${{ toJson(steps.set-params.outputs) }}
+          for param in "${!params[@]}"; do
+            value="${params[$param]}"
+            echo "Parameter Name: $param, Value: $value"
+            
+            # You can perform additional actions or logic based on each key-value pair here
+    
