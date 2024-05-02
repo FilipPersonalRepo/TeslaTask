@@ -27,9 +27,10 @@ jobs:
       - name: Loop Through All Outputs
         run: |
           declare -A params=${{ toJson(steps.set-params.outputs) }}
-          for param in "${!params[@]}"; do
-            value="${params[$param]}"
-            echo "Parameter Name: $param, Value: $value"
-            
-            # You can perform additional actions or logic based on each key-value pair here
-    
+          for param in $params; do 
+            key=$(echo $param | cut -d'=' -f1)
+            value=$(echo $param | cut -d'=' -f2)
+            sed -i "s/{$key}/$value/g" run.json
+          done
+      - name: Verify run.json
+        run: cat run.json
