@@ -26,8 +26,7 @@ jobs:
             done
       - name: Loop Through All Outputs
         run: |
-          params=$(echo "${{ steps.set-params.outputs.params }}" | jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]')
-          for param in $params; do 
+          for param in steps.set-params.outputs; do 
             key=$(echo $param | cut -d'=' -f1)
             value=$(echo $param | cut -d'=' -f2)
             sed -i "s/{$key}/$value/g" run.json
