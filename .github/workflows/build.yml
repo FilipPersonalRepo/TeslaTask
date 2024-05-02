@@ -10,19 +10,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-      
-      - name: Read input.yml
-        id: read-input
-        run: echo "::set-output name=param::$(cat input.yml | cut -d ':' -f 2 | tr -d ' ')"
-      
-      - name: Update run.json
+      - name: Read input.yml and set params
+        id: set-params
         run: |
-          sed -i "s/{param}/$(echo ${{ steps.read-input.outputs.param }})/g" run.json
-          
-      - name: Verify testname
+          for param in $(cat input.yml | awk -F': ' '{print $1}'); do
+            value=$(cat input.yml | grep "^$param" | cut -d ':' -f 2 | tr -d ' ')
+            echo "::set-output name=$param::$value"
+          done
+
+      - name: Update run.json with params
         run: |
-          cat run.json
+          for param in $(cat input.yml | awk -F': ' '{print $1}'); do 
+            sed -i "s/{$param}/$(echo ${{ steps.set-params.outputs.$param }})/g" run.json
+          done
+
+      - name: Verify updated content of run.json
+        run: cat run.json
