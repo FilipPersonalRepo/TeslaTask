@@ -1,18 +1,24 @@
 name: Testing
-
 on:
   workflow_dispatch:
 
 jobs:
-  do-nothing:
+  update-json:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Do nothing action
-        run: echo "This job does nothing"
-  do-nothing2:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Do nothing action
-        run: echo "This job does nothing"
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      
+      - name: Read input.yml
+        id: read-input
+        run: echo "::set-output name=param::$(cat input.yml)"
+      
+      - name: Update run.json
+        run: |
+          sed -i "s/{param}/$(echo ${{ steps.read-input.outputs.param }})/g" run.json
