@@ -21,7 +21,7 @@ jobs:
       - name: Update run.json with params
         run: |
           for param in $(cat input.yml | awk -F': ' '{print $1}'); do 
-            sed -i "s/{$param}/$(echo ${{ steps.set-params.outputs.$param }})/g" run.json
+            sed -i "s/{$param}/$(echo ${{ steps.set-params.outputs.[$param] }})/g" run.json
           done
 
       - name: Verify updated content of run.json
