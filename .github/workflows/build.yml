@@ -14,23 +14,13 @@ jobs:
       - name: Read input.yml and set params
         id: set-params
         run: |
-          for param in $(cat input.yml | awk -F': ' '{print $1}'); do
-            value=$(cat input.yml | grep "^$param" | cut -d ':' -f 2 | tr -d ' ')
-            echo "::set-output name=$param::$value"
-          done
-      - name: Print Key-Value Pairs
-        run: |
-          echo "Key-Value Pairs:"
-          echo "${{ toJson(steps.set-params.outputs.params) }}"
-      
-      - name: Update run.json with params
-        run: |
-          params=$(echo "${{ steps.set-params.outputs.params }}" | jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]')
-          for param in $params; do 
-            key=$(echo $param | cut -d'=' -f1)
-            value=$(echo $param | cut -d'=' -f2)
-            sed -i "s/{$key}/$value/g" run.json
-          done
-
-      - name: Verify updated content of run.json
-        run: cat run.json
+            for param in $(cat input.yml | awk -F': ' '{print $1}'); do
+                value=$(cat input.yml | grep "^$param" | cut -d ':' -f 2 | tr -d ' ')
+                echo "Extracted Parameter: $param"
+                echo "Extracted Value: $value"
+                
+                # Set output only if value is not empty
+                if [ ! -z "$value" ]; then
+                    echo "::set-output name=$param::$value"
+                fi
+            done
