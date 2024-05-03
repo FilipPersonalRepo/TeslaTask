@@ -1,3 +1,3 @@
-- pandas
-- black
-- pyyaml
+pandas
+black
+yaml
