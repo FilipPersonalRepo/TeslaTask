@@ -1,6 +1,5 @@
 {
-  testname: "rg-dev-{name}-{state}"
-  , testregion: { 
-                level2:  "{region}-{name}"
-                }
+    "testname": "rg-dev-{name}-{state}",
+    "testregion": {
+        "testlevel": "{region}-{name}"
 }
