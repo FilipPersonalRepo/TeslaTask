@@ -1,37 +1,26 @@
 name: Testing
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  update-json:
+  build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       
-      - name: Read input.yml and set params
-        id: set-params
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requirements.txt
+
+      - name: Read parameters from input.yml and replace in run.json
         run: |
-            for param in $(cat input.yml | awk -F': ' '{print $1}'); do
-                value=$(cat input.yml | grep "^$param" | cut -d ':' -f 2 | tr -d ' ')
-                echo "Extracted Parameter: $param"
-                echo "Extracted Value: $value"
-                
-                # Set output only if value is not empty
-                if [ ! -z "$value" ]; then
-                    echo "::set-output name=$param::$value"
-                fi
-            done
-      - name: Loop Through All Outputs
-        run: |
-          for param in steps.set-params.outputs; do 
-            key=$(echo $param | cut -d'=' -f1)
-            value=$(echo $param | cut -d'=' -f2)
-            echo "Extracted Parameter: $key"
-            echo "Extracted Value: $value"
-            sed -i "s/{$key}/$value/g" run.json
-          done
-      - name: Verify run.json
-        run: cat run.json
+          python script.py
