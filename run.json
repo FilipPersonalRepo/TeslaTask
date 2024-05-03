@@ -1,6 +1,6 @@
 {
-    "testname": "rg-dev-{name}-{state}",
+    "testname": "rg-dev-{{name}}-{{state}}",
     "testregion": {
-        "testlevel": "{region}-{name}"
+        "testlevel": "{{region}}-{{name}}"
     }
-{    
+}
