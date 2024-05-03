@@ -13,7 +13,7 @@ print(data)
 def replace_placeholders(data, params):
     if isinstance(data, str):
         for key, value in params.items():
-            data = data.replace(f"{key}", value)
+            data = data.replace(f"{{{{{key}}}}}", value)
         return data
     elif isinstance(data, dict):
         return {key: replace_placeholders(value, params) for key, value in data.items()}
