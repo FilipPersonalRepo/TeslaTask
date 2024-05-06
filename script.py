@@ -1,11 +1,10 @@
 import json
 import yaml
 
-# Read parameters from input.yml
+
 with open('input.yml', 'r') as file:
     params = yaml.safe_load(file)
 
-# Replace placeholders in run.json with parameters
 with open('run.json', 'r') as file:
     data = json.load(file)
 
@@ -21,5 +20,10 @@ def replace_placeholders(data, params):
         return [replace_placeholders(item, params) for item in data]
     return data
 
+
+
 updated_json_data = replace_placeholders(data, params)    
 print(updated_json_data)
+
+with open('output.json', 'w') as json_file:
+    json.dump(updated_json_data, json_file, indent=4)
