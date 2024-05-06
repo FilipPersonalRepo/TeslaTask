@@ -17,19 +17,19 @@ jobs:
       #   run: echo "Current branch is ${{ github.ref }}"
       
       - name: Create new branch
-        run: git checkout -b testbranch6 main
+        run: git checkout -b testbranch7 dev
         
-      - name: Set up Python 
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
+      # - name: Set up Python 
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: '3.x'
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      # - name: Install dependencies
+      #   run: pip install -r requirements.txt
 
-      - name: Read parameters from input.yml and replace in run.json
-        run: |
-          python script.py
+      # - name: Read parameters from input.yml and replace in run.json
+      #   run: |
+      #     python script.py
       
-      - name: Push branch to remote
-        run: git push origin testbranch6 
+      # - name: Push branch to remote
+      #   run: git push origin testbranch6 
