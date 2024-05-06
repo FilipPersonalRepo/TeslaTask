@@ -17,9 +17,9 @@ jobs:
         run: echo "Current branch is ${{ github.ref }}"
       
       - name: Create new branch
-        run: git | 
-                  checkout -b testbranch5 main
-                  switch testbranch5
+        run: | 
+              git checkout -b testbranch5 main
+              git switch testbranch5
 
       - name: Print current branch after
         run: echo "Current branch is ${{ github.ref }}"  
