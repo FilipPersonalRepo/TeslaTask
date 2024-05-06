@@ -26,4 +26,6 @@ updated_json_data = replace_placeholders(data, params)
 print(updated_json_data)
 
 with open('output.json', 'w') as json_file:
+    print("Started Writing !!!")
     json.dump(updated_json_data, json_file, indent=4)
+    print("DONE")
