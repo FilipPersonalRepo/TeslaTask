@@ -33,5 +33,5 @@ jobs:
       #   run: |
       #     python script.py
       
-      # - name: Push branch to remote
-      #   run: git push origin testbranch6 
+      - name: Push branch to remote
+        run: git push origin testbranch6 
