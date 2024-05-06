@@ -13,12 +13,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-            ref: "refs/heads/main"
+            ref: "refs/heads/dev"
       # - name: Print current branch before
       #   run: echo "Current branch is ${{ github.ref }}"
       
       - name: Create new branch
-        run: git checkout -b testbranch9 dev
+        run: git checkout -b testbranch19 dev
              # git push origin testbranch8
         
       # - name: Set up Python 
