@@ -12,7 +12,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
+        
+      - name: Print current branch before
+        run: echo "Current branch is ${{ github.ref }}"
+      
       - name: Create new branch
         run: git checkout -b testbranch3
         
@@ -27,6 +30,9 @@ jobs:
       - name: Read parameters from input.yml and replace in run.json
         run: |
           python script.py
+      
+      - name: Print current branch after
+        run: echo "Current branch is ${{ github.ref }}"      
       
       - name: Push branch to remote
         run: git push origin testbranch3  
