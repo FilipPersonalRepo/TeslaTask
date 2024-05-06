@@ -14,7 +14,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-            ref: "refs/heads/dev", "refs/heads/main"
+            ref: "refs/heads/main"
       # - name: Print current branch before
       #   run: echo "Current branch is ${{ github.ref }}"
       
