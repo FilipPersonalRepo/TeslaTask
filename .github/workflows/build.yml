@@ -14,21 +14,19 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Create new branch
-        run: git checkout -b testbranch
+        run: git checkout -b testbranch2
 
       - name: Push branch to remote
+        run: git push origin testbranch2  
+        
+      - name: Set up Python 
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Read parameters from input.yml and replace in run.json
         run: |
-          # git config --global user.email "you@example.com"
-          # git config --global user.name "Your Name"
-          git push origin testbranch     
-      # - name: Set up Python 
-      #   uses: actions/setup-python@v2
-      #   with:
-      #     python-version: '3.x'
-
-      # - name: Install dependencies
-      #   run: pip install -r requirements.txt
-
-      # - name: Read parameters from input.yml and replace in run.json
-      #   run: |
-      #     python script.py
+          python script.py
