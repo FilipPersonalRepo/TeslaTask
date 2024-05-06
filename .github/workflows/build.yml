@@ -1,12 +1,37 @@
 name: Testing
 
 on:
-  workflow_dispatch:
-
+  push:
+    branches:
+      - main
 jobs:
-  do-nothing:
+  build:
     runs-on: ubuntu-latest
-    
+    permissions:
+      contents: write
     steps:
-      - name: Do nothing action
-        run: echo "This job does nothing"
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+            ref: "refs/heads/dev"
+      # - name: Print current branch before
+      #   run: echo "Current branch is ${{ github.ref }}"
+      
+      - name: Create new branch
+        run: git checkout -b testbranch19 dev
+             # git push origin testbranch8
+        
+      # - name: Set up Python 
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: '3.x'
+
+      # - name: Install dependencies
+      #   run: pip install -r requirements.txt
+
+      # - name: Read parameters from input.yml and replace in run.json
+      #   run: |
+      #     python script.py
+      
+      - name: Push branch to remote
+        run: git push origin testbranch19 
