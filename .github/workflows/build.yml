@@ -19,7 +19,7 @@ jobs:
       #   run: echo "Current branch is ${{ github.ref }}"
       
       - name: Create new branch
-        run: git checkout -b testbranch dev
+        run: git checkout -b testbranch main
              # git push origin testbranch8
         
       # - name: Set up Python 
