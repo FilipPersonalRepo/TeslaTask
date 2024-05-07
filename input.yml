@@ -1,6 +1,0 @@
-parameters:
-  name: Filip
-  region: WE
-  state: CA
-source: varsets/template
-destination: varsets/dev
