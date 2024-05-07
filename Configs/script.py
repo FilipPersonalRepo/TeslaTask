@@ -68,5 +68,5 @@ class VarsetGenerator:
       
 
 if __name__ == "__main__":
-    cl = VarsetGenerator('Configs\input.yml')
+    cl = VarsetGenerator('configs\input.yml')
     cl.run()
