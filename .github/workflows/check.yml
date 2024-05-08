@@ -1,6 +1,7 @@
 name: Action Sample Workflow
 # Run workflow when a new pull request is opened
-on: [pull_request]
+on: 
+  workflow_dispatch:
 jobs:
   check_user_permission:
     runs-on: ubuntu-latest
