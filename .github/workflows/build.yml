@@ -11,25 +11,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-            ref: "refs/heads/main"
-      # - name: Print current branch before
-      #   run: echo "Current branch is ${{ github.ref }}"
-      
-      - name: Create new branch
-        run: git checkout -b testbranch main
-             # git push origin testbranch8
-        
-      # - name: Set up Python 
-      #   uses: actions/setup-python@v2
-      #   with:
-      #     python-version: '3.x'
+            ref: "refs/heads/template"
+ 
+      - name: Set up Python 
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
-      # - name: Install dependencies
-      #   run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r Configs/requirements.txt
 
-      # - name: Read parameters from input.yml and replace in run.json
-      #   run: |
-      #     python script.py
-      
-      - name: Push branch to remote
-        run: git push origin testbranch
+      - name: Read parameters from input.yml and replace placeholders
+        run: |
+          python Configs/script.py
+          
+      - name: Commit and push changes
+        run: |
+              git config --global user.email "filipshahanski@gmail.com"
+              git config --global user.name "Filip"
+              git commit -am "Apply changes ! "
+              git push origin template
