@@ -26,3 +26,9 @@ jobs:
       - name: Read parameters from input.yml and replace placeholders
         run: |
           python Configs/script.py
+          
+      - name: Commit and push changes
+        run: |
+          git add .
+          git commit -m "Apply changes"
+          git push origin template
