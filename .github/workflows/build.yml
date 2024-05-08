@@ -29,5 +29,7 @@ jobs:
           
       - name: Commit and push changes
         run: |
+              git config --global user.email "filipshahanski@gmail.com"
+              git config --global user.name "Filip"
               git commit -am "Apply changes ! "
               git push origin template
