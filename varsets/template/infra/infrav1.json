@@ -1,0 +1,16 @@
+{"t55":{"t2":{
+    "testname": "rg-dev-{{name}}-{{state}}",
+    "testregion": {
+        "testlevel": "{{region}}-{{name}}"
+    }
+},"t55":{
+    "testname": "rg-dev-{{name}}-{{state}}",
+    "testregion": {
+        "testlevel": "{{region}}-{{name}}"
+    }
+}},"t515":{
+    "testname": "rg-dev-{{name}}-{{state}}",
+    "testregion": {
+        "testlevel": "{{region}}-{{name}}"
+    }
+}}

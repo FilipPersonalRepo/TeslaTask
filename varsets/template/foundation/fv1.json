@@ -1,6 +1,6 @@
-{
+{"t2":{
     "testname": "rg-dev-{{name}}-{{state}}",
     "testregion": {
         "testlevel": "{{region}}-{{name}}"
     }
-}
+}}

@@ -1,0 +1,7 @@
+parameters:
+  name: Filip
+  region: WE
+  state: CA
+  env: testbranch
+source_folder: "varsets"
+source_template: "template"

@@ -1,0 +1,12 @@
+{"t1":{"t2":{
+    "testname": "rg-dev-{{name}}-{{state}}",
+    "testregion": {
+        "testlevel": "{{region}}-{{name}}"
+    }
+},"t3":{
+    "testname": "rg-dev-{{name}}-{{state}}",
+    "testregion": {
+        "testlevel": "{{region}}-{{name}}"
+    }
+}}
+}

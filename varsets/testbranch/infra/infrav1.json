@@ -1,0 +1,22 @@
+{
+    "t55": {
+        "t2": {
+            "testname": "rg-dev-Filip-CA",
+            "testregion": {
+                "testlevel": "WE-Filip"
+            }
+        },
+        "t55": {
+            "testname": "rg-dev-Filip-CA",
+            "testregion": {
+                "testlevel": "WE-Filip"
+            }
+        }
+    },
+    "t515": {
+        "testname": "rg-dev-Filip-CA",
+        "testregion": {
+            "testlevel": "WE-Filip"
+        }
+    }
+}

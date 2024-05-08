@@ -29,5 +29,6 @@ jobs:
         run: |
               git config --global user.email "filipshahanski@gmail.com"
               git config --global user.name "Filip"
-              git commit -am "Apply changes ! "
+              git add .
+              git commit -m "Apply changes ! "
               git push origin template
