@@ -2,6 +2,6 @@ parameters:
   name: Filip
   region: WE
   state: CA
-  env: differentFromMain
+  env: TESTTESTTEST
 source_folder: "varsets"
 source_template: "template"
