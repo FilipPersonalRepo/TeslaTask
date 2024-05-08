@@ -28,4 +28,6 @@ jobs:
           python Configs/script.py
           
       - name: Commit and push changes
-        run: git push origin template
+        run: |
+              git commit -am "Apply changes ! "
+              git push origin template
