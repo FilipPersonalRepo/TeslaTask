@@ -25,4 +25,4 @@ jobs:
 
       - name: Read parameters from input.yml and replace placeholders
         run: |
-          python script.py
+          python Configs/script.py
