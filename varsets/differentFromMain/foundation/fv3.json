@@ -1,0 +1,16 @@
+{
+    "t1": {
+        "t2": {
+            "testname": "rg-dev-Filip-CA",
+            "testregion": {
+                "testlevel": "WE-Filip"
+            }
+        },
+        "t3": {
+            "testname": "rg-dev-Filip-CA",
+            "testregion": {
+                "testlevel": "WE-Filip"
+            }
+        }
+    }
+}
